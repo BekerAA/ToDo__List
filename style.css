@@ -1,0 +1,89 @@
+:root{
+  --red:#EA5959;
+  --defal:rgba(0, 0, 0, 0.4);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Nunito", sans-serif;
+  background: var(--red);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.todo{
+  padding: 32px;
+  background-color: #fff;
+  width: 90vw;
+  border-radius: 16px;
+}
+
+.todo__new{
+  display: flex;
+  margin: 16px 0 32px;
+  --size:50px
+}
+
+.todo__new input{
+  margin-right: 16px;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 8px 16px;
+  height: var(--size);
+  border: 1px solid var(--defal);
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+.todo__add, .todo__task-del{
+  cursor: pointer;
+  text-align: center;
+  line-height: calc(var(--size)*0.95);
+  height: var(--size);
+  width: var(--size);
+  border-radius: var(--size);
+  font-size: 32px;
+  font-weight: 200;
+  background-color: var(--red);
+  color: #fff;
+}
+
+
+.todo__task{
+  cursor: default;
+  --size:36px;
+  display: flex;
+  align-items: center;
+  min-height: var(--size);
+}
+
+.todo__task:hover .todo__task-del{
+  display: block;
+}
+
+.todo__checkbox{
+  margin-right: 16px;
+  cursor: default;
+}
+
+.todo__task-text{
+  font-size: 20px;
+
+}
+.todo__task-del{
+  display: none;
+  margin-left: auto;
+  margin-right: 0;
+  --size:36px;
+  font-size: 44px;
+  line-height: calc(var(--size)*0.9);
+}
