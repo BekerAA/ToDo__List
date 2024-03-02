@@ -75,6 +75,34 @@ body{
   cursor: default;
 }
 
+.todo__checkbox input{
+  display: none;
+}
+.todo__checkbox input:checked+div{
+  background-color: var(--red);
+}
+
+.todo__checkbox div{
+  --size:28px;
+  height: var(--size);
+  width: var(--size);
+  border: 1px solid var(--red);
+  border-radius: 4px;
+  position: relative;
+}
+
+.todo__checkbox div::after{
+  content: "";
+  text-align: center;
+  display: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .todo__task-text{
   font-size: 20px;
 
