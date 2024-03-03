@@ -48,11 +48,12 @@ function taskRendre(list){
   let htmlList = ""
   list.forEach((task) => {
     const cls = task.isCoomplete ? 'todo__task todo__task_complete': 'todo__task'
+    const checked = task.isCoomplete ? 'checked' : ''
     const  taskHtml = `
     <div id="${task.id}" class="${cls}">
-          <label class="todo__checkbox" checked= "${task.isCoomplete}">
-            <input type="checkbox">
-            <div></div>
+          <label class="todo__checkbox">
+            <input type="checkbox" ${checked}>
+            <div class ="todo__checkbox-div" ></div>
           </label>
           <div class="todo__task-text">${task.text}</div>
           <div class="todo__task-del">-</div>
@@ -62,4 +63,12 @@ function taskRendre(list){
   })
 
   dom.tasks.innerHTML = htmlList
+}
+
+dom.tasks.onclick = (event) => {
+  const target =event.target
+  if (target.classList.contains('todo__checkbox-div')){
+
+    console.log(target.previousElementSibling)
+  }
 }
