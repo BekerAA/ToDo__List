@@ -57,6 +57,10 @@ body{
   color: #fff;
 }
 
+.todo__list > *:not(:last-child){
+margin-bottom: 8px;
+}
+
 
 .todo__task{
   cursor: default;
@@ -68,6 +72,11 @@ body{
 
 .todo__task:hover .todo__task-del{
   display: block;
+}
+
+.todo__task_complete .todo__task-text{
+  text-decoration: line-through;
+  color: var(--defal);
 }
 
 .todo__checkbox{
@@ -82,20 +91,24 @@ body{
   background-color: var(--red);
 }
 
+.todo__checkbox input:checked+div::after{
+  display: block;
+}
 .todo__checkbox div{
+  cursor: pointer;
   --size:28px;
   height: var(--size);
   width: var(--size);
   border: 1px solid var(--red);
   border-radius: 4px;
   position: relative;
+  color: #fff;
 }
 
 .todo__checkbox div::after{
-  content: "";
+  content: "\2713";
   text-align: center;
   display: none;
-  display: block;
   position: absolute;
   top: 0;
   left: 0;
