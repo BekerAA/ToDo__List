@@ -2,6 +2,7 @@ const dom = {
   new: document.getElementById('new--task'),
   add: document.getElementById('add'),
   tasks: document.getElementById('tasks'),
+  count: document.getElementById('count')
 }
 
 const tasks =[];
@@ -62,13 +63,47 @@ function taskRendre(list){
         htmlList = htmlList + taskHtml
   })
 
-  dom.tasks.innerHTML = htmlList
+  dom.tasks.innerHTML = htmlList;
+  
 }
 
+
+// Отслеживаем клик по чек-боксу задачи 
 dom.tasks.onclick = (event) => {
   const target =event.target
-  if (target.classList.contains('todo__checkbox-div')){
-
-    console.log(target.previousElementSibling)
+  const isCheakboxEl = target.classList.contains('todo__checkbox-div');
+  const isDeleteEl = target.classList.contains('todo__task-del');
+  if (isCheakboxEl){
+    const task = target.parentElement.parentElement
+    const taskID = task.getAttribute('id')
+    changeTaskStatus(taskID, tasks)
+    taskRendre(tasks)
+  }
+  if (isDeleteEl) {
+    const task = target.parentElement
+    const taskID = task.getAttribute('id')
+    deleteTask(taskID, tasks)
+    taskRendre(tasks)
+    console.log(tasks.length, tasks)
   }
 }
+
+//Функция изменения статуса задачи
+function changeTaskStatus( id, list){
+  list.forEach((task) => {
+    if (task.id == id) {
+      task.isCoomplete = !task.isCoomplete
+    }
+  })
+}
+
+//Функция удаление задач
+function deleteTask(id, list){
+  list.forEach((task, idx) => {
+    if (task.id == id){
+      list.splice(idx, 1)
+    }
+  })
+ 
+}
+
